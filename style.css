@@ -1,0 +1,150 @@
+
+.ui {
+  /* Keep your position/top/left */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 320px;
+  z-index: 1000;
+
+  /* UPGRADE THESE: Darker glass + White text */
+  background: rgba(15, 23, 42, 0.8); 
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff; /* Contrast is key! */
+  
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: 'Inter', 'Poppins', sans-serif;
+}
+  
+
+  .ui input,
+  .ui button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+  }
+  
+ 
+  .ui input[type="file"] {
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    border: 1px solid #ccc;
+  }
+  
+ 
+.ui button {
+  /* Keep your width/margin/padding */
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 12px;
+  
+  /* UPGRADE: Sleek Gradient & Animation */
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ui button:hover {
+  transform: translateY(-2px) scale(1.02); /* Slight pop-out effect */
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+  
+
+  #extractedText {
+  font-size: 1.05em; /* Slightly larger */
+  color: #f8fafc;    /* Very light grey-white for maximum readability */
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05); /* Subtle box to separate text from bg */
+  border-radius: 8px;
+  white-space: pre-wrap;
+  max-height: 180px;
+  overflow-y: auto;
+  font-weight: 500;   /* Medium weight so it's not too thin */
+  line-height: 1.6;   /* Better spacing between lines */
+  letter-spacing: 0.3px;
+}
+
+/* Optional: Add a "placeholder" style for when no text is extracted yet */
+#extractedText:empty::before {
+  content: "Extracted text will appear here...";
+  color: rgba(255, 255, 255, 0.4); /* Faded for the placeholder state */
+  font-style: italic;
+}
+  
+#gestureCanvas {
+  pointer-events: none;
+}
+
+.nav-box {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  
+  /* UPGRADE: Techy blue tint instead of solid blue */
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 4px solid #3b82f6;
+  
+  font-size: 15px;
+  color: #cbd5e1; /* Soft white/grey */
+}
+.ar-direction-overlay {
+  position: fixed;
+  top: 50%;
+  left: 60%; /* Shifted slightly right so it doesn't overlap the UI panel */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  display: none; /* 🔥 Hidden by default */
+  transition: opacity 0.5s ease;
+}
+
+.ar-arrow {
+  font-size: 100px;
+  color: #00f2ff;
+  text-shadow: 0 0 20px rgba(0, 242, 255, 0.8);
+  display: inline-block;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 🔥 Smooth rotation */
+  animation: float 2s ease-in-out infinite;
+}
+
+#ar-instruction {
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  background: rgba(0, 242, 255, 0.2);
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+/* Change your animation to ONLY move up and down */
+@keyframes float {
+  0%, 100% { 
+    /* Remove any rotate(...) from here */
+    translate: 0 0; 
+  }
+  50% { 
+    /* Remove any rotate(...) from here */
+    translate: 0 -20px; 
+  }
+}
+
+.ar-arrow {
+  display: inline-block; /* Essential for rotation to work */
+  font-size: 80px;
+  color: #00f2ff;
+  transition: transform 0.5s ease; /* Smoothly swings the arrow */
+  animation: float 2s ease-in-out infinite;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI AR Vision Navigator</title>
+
+  <!-- MediaPipe -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body style="margin:0; overflow:hidden; font-family:Poppins;">
+
+  <!-- Camera -->
+  <video id="cameraView" autoplay playsinline
+    style="position:fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1;">
+  </video>
+
+  <!-- Gesture Canvas -->
+  <canvas id="gestureCanvas"
+    style="position:absolute; top:0; left:0; z-index:10;">
+  </canvas>
+
+  <!-- Scan Button -->
+  <button onclick="captureAndRead()"
+    style="position:fixed; top:20px; right:20px; z-index:1000;">
+    📸 Scan Text
+  </button>
+      
+  <!-- UI PANEL -->
+   <div id="arHUD" class="ar-direction-overlay">
+  <div id="arArrow" class="ar-arrow">↑</div>
+  <p id="ar-instruction">Calculating route...</p>
+</div>
+  <div class="ui glass">
+    <div class="tabs">
+  <button onclick="switchMode('navigation')">🧭 Navigation</button>
+  <button onclick="switchMode('ocr')">📷 OCR</button>
+  <button onclick="switchMode('gesture')">✋ Sign Language</button>
+</div>
+
+    <h2>🤖 AI AR Vision Navigator</h2>
+
+    <!-- Navigation Section -->
+    <h3>🧭 Indoor Navigation</h3>
+
+    <div id="navigationDisplay" class="nav-box">
+      Navigation instructions will appear here...
+    </div>
+
+    <button onclick="startVoiceNavigation()">
+      🎤 Start Voice Navigation
+    </button>
+
+    <p id="voiceStatus">
+      Say: "Navigate to ICU" or "Navigate to Pharmacy"
+    </p>
+
+    <hr>
+
+    <!-- OCR Section -->
+    <h3>📷 OCR Text Reader</h3>
+
+    <p id="extractedText">
+      Extracted text will appear here...
+    </p>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
